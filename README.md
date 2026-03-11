@@ -1,206 +1,93 @@
----
-base_model: google/flan-t5-base
-library_name: peft
-tags:
-- base_model:adapter:google/flan-t5-base
-- lora
-- transformers
----
+# FLAN-T5 Motivation Model
 
-# Model Card for Model ID
+## Project Overview
 
-<!-- Provide a quick summary of what the model is/does. -->
+This project presents an innovative Artificial Intelligence model designed to enhance user focus and productivity by generating personalized motivational messages, or "nudges," tailored to their emotional state. Built upon the powerful **FLAN-T5** architecture and fine-tuned using **LoRA (Low-Rank Adaptation)** and **PEFT (Parameter-Efficient Fine-Tuning)** techniques, this model aims to provide timely encouragement to users, helping them stay engaged with their tasks for extended periods.
 
+## Key Features
 
+*   **Personalized Nudge Generation:** The model generates encouraging messages dynamically, adapting to whether the user is experiencing low motivation or high enthusiasm.
+*   **FLAN-T5 Base Model:** Leverages the robust capabilities of Google's FLAN-T5 for sequence-to-sequence tasks, ensuring high-quality text generation.
+*   **LoRA & PEFT Fine-tuning:** Utilizes parameter-efficient fine-tuning methods to adapt the large language model to the specific task of motivational text generation with minimal computational resources.
+*   **Custom-Built Dataset:** A significant aspect of this project is the **entirely custom-created dataset**, meticulously developed from scratch by the project owner. This bespoke dataset is crucial for training the model to understand and generate contextually relevant and effective motivational nudges.
 
-## Model Details
+## Project Context
 
-### Model Description
+This project was developed as a **graduation project**, showcasing advanced skills in Natural Language Processing (NLP), machine learning model fine-tuning, and data engineering. The emphasis on a custom dataset highlights a deep understanding of data preparation and its critical role in AI model performance.
 
-<!-- Provide a longer summary of what this model is. -->
+## Getting Started
 
+To set up and run this project locally, follow these steps:
 
+### Prerequisites
 
-- **Developed by:** [More Information Needed]
-- **Funded by [optional]:** [More Information Needed]
-- **Shared by [optional]:** [More Information Needed]
-- **Model type:** [More Information Needed]
-- **Language(s) (NLP):** [More Information Needed]
-- **License:** [More Information Needed]
-- **Finetuned from model [optional]:** [More Information Needed]
+Ensure you have Python 3.8+ installed. All necessary Python libraries are listed in `requirements.txt`.
 
-### Model Sources [optional]
+### Installation
 
-<!-- Provide the basic links for the model. -->
+1.  **Clone the repository:**
 
-- **Repository:** [More Information Needed]
-- **Paper [optional]:** [More Information Needed]
-- **Demo [optional]:** [More Information Needed]
+    ```bash
+    git clone https://github.com/YOUR_USERNAME/FLAN-T5-Motivation-Model.git
+    cd FLAN-T5-Motivation-Model
+    ```
 
-## Uses
+2.  **Install dependencies:**
 
-<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-### Direct Use
+### Usage
 
-<!-- This section is for the model use without fine-tuning or plugging into a larger ecosystem/app. -->
+The core logic for training and inference is contained within the `FLAN_T5.ipynb` Jupyter Notebook. This notebook demonstrates:
 
-[More Information Needed]
+*   Data loading and preprocessing from `nudge_balanced_740.csv`.
+*   Configuration and application of LoRA for fine-tuning the FLAN-T5 model.
+*   Training the model.
+*   Generating motivational nudges based on user input and mood.
 
-### Downstream Use [optional]
+### Running the Streamlit App
 
-<!-- This section is for the model use when fine-tuned for a task, or when plugged into a larger ecosystem/app -->
+To run the interactive web application:
 
-[More Information Needed]
+```bash
+streamlit run app.py
+```
 
-### Out-of-Scope Use
+This will open a local web server, and you can access the application in your browser.
 
-<!-- This section addresses misuse, malicious use, and uses that the model will not work well for. -->
+### Running the Jupyter Notebook
 
-[More Information Needed]
+The core logic for training and inference is contained within the `FLAN_T5.ipynb` Jupyter Notebook. This notebook demonstrates:
 
-## Bias, Risks, and Limitations
+*   Data loading and preprocessing from `nudge_balanced_740.csv`.
+*   Configuration and application of LoRA for fine-tuning the FLAN-T5 model.
+*   Training the model.
+*   Generating motivational nudges based on user input and mood.
 
-<!-- This section is meant to convey both technical and sociotechnical limitations. -->
+To run the notebook:
 
-[More Information Needed]
+```bash
+jupyter notebook FLAN_T5.ipynb
+```
 
-### Recommendations
+## Files in this Repository
 
-<!-- This section is meant to convey recommendations with respect to the bias, risk, and technical limitations. -->
+*   `app.py`: The Streamlit web application for interacting with the FLAN-T5 Motivation Model.
+*   `FLAN_T5.ipynb`: The main Jupyter Notebook containing the model training, fine-tuning, and inference code.
+*   `flan_nudge_balanced_best.zip`: Compressed file containing the fine-tuned model weights.
+*   `nudge_balanced_740.csv`: The custom-built dataset used for training the model.
+*   `requirements.txt`: Lists all Python dependencies required to run the project.
 
-Users (both direct and downstream) should be made aware of the risks, biases and limitations of the model. More information needed for further recommendations.
+## Contribution
 
-## How to Get Started with the Model
+Contributions are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request.
 
-Use the code below to get started with the model.
+## License
 
-[More Information Needed]
+This project is licensed under the MIT License - see the LICENSE file for details. (Note: A LICENSE file will be added if needed.)
 
-## Training Details
+## Contact
 
-### Training Data
-
-<!-- This should link to a Dataset Card, perhaps with a short stub of information on what the training data is all about as well as documentation related to data pre-processing or additional filtering. -->
-
-[More Information Needed]
-
-### Training Procedure
-
-<!-- This relates heavily to the Technical Specifications. Content here should link to that section when it is relevant to the training procedure. -->
-
-#### Preprocessing [optional]
-
-[More Information Needed]
-
-
-#### Training Hyperparameters
-
-- **Training regime:** [More Information Needed] <!--fp32, fp16 mixed precision, bf16 mixed precision, bf16 non-mixed precision, fp16 non-mixed precision, fp8 mixed precision -->
-
-#### Speeds, Sizes, Times [optional]
-
-<!-- This section provides information about throughput, start/end time, checkpoint size if relevant, etc. -->
-
-[More Information Needed]
-
-## Evaluation
-
-<!-- This section describes the evaluation protocols and provides the results. -->
-
-### Testing Data, Factors & Metrics
-
-#### Testing Data
-
-<!-- This should link to a Dataset Card if possible. -->
-
-[More Information Needed]
-
-#### Factors
-
-<!-- These are the things the evaluation is disaggregating by, e.g., subpopulations or domains. -->
-
-[More Information Needed]
-
-#### Metrics
-
-<!-- These are the evaluation metrics being used, ideally with a description of why. -->
-
-[More Information Needed]
-
-### Results
-
-[More Information Needed]
-
-#### Summary
-
-
-
-## Model Examination [optional]
-
-<!-- Relevant interpretability work for the model goes here -->
-
-[More Information Needed]
-
-## Environmental Impact
-
-<!-- Total emissions (in grams of CO2eq) and additional considerations, such as electricity usage, go here. Edit the suggested text below accordingly -->
-
-Carbon emissions can be estimated using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700).
-
-- **Hardware Type:** [More Information Needed]
-- **Hours used:** [More Information Needed]
-- **Cloud Provider:** [More Information Needed]
-- **Compute Region:** [More Information Needed]
-- **Carbon Emitted:** [More Information Needed]
-
-## Technical Specifications [optional]
-
-### Model Architecture and Objective
-
-[More Information Needed]
-
-### Compute Infrastructure
-
-[More Information Needed]
-
-#### Hardware
-
-[More Information Needed]
-
-#### Software
-
-[More Information Needed]
-
-## Citation [optional]
-
-<!-- If there is a paper or blog post introducing the model, the APA and Bibtex information for that should go in this section. -->
-
-**BibTeX:**
-
-[More Information Needed]
-
-**APA:**
-
-[More Information Needed]
-
-## Glossary [optional]
-
-<!-- If relevant, include terms and calculations in this section that can help readers understand the model or model card. -->
-
-[More Information Needed]
-
-## More Information [optional]
-
-[More Information Needed]
-
-## Model Card Authors [optional]
-
-[More Information Needed]
-
-## Model Card Contact
-
-[More Information Needed]
-### Framework versions
-
-- PEFT 0.18.1
+For any inquiries, please contact [Your Name/Email/LinkedIn Profile].
